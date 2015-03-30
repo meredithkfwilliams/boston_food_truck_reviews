@@ -1,8 +1,8 @@
 class CreateTruckCategories < ActiveRecord::Migration
   def change
     create_table :truck_categories do |t|
-      t.string :category_id
-      t.integer :truck_id
+      t.integer :category_id, null: false
+      t.integer :truck_id, null: false
 
       t.timestamps
     end
