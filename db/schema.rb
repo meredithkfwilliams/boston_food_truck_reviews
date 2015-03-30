@@ -11,10 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330152836) do
+ActiveRecord::Schema.define(version: 20150330193132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "location_name", null: false
+    t.decimal  "latitude",      null: false
+    t.decimal  "longitude",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "truck_id",   null: false
+    t.integer  "rating",     null: false
+    t.text     "body",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "truck_categories", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.integer  "truck_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "truck_location_schedules", force: :cascade do |t|
+    t.integer  "truck_id",    null: false
+    t.integer  "location_id", null: false
+    t.string   "weekday",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.string   "truck_name",                 null: false
+    t.integer  "owner_id"
+    t.boolean  "viewable",   default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
