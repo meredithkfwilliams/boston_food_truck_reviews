@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user edits profile', %Q{
+feature 'user edits profile', %{
   As an authenticated user
   I want to update my information
   So that I can post items and review them
@@ -8,7 +8,7 @@ feature 'user edits profile', %Q{
   # Acceptance Criteria
   # * If I'm signed in, I have the option to update my profile
   # * When I update my profile successfullly
-  # * I get a confirmation that my profile has been udpated and I can see my updated information
+  # * I get a confirmation that my profile has been updated.
 
   # * When I update my profile with invalid information
   # * I get a error that displays the invalid fields and their error(s)
