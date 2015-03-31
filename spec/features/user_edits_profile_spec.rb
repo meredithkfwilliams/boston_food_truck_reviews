@@ -28,11 +28,11 @@ feature 'user edits profile', %Q{
     click_link 'Edit Profile'
 
     fill_in 'Email', with: 'somenewemail@gmail.com'
+    fill_in 'Current password', with: user.password
 
     click_button 'Update Profile'
 
-    expect(page).to have_content('Profile successfully updated.')
-    expect(page).to have_content('somenewemail@gmail.com')
+    expect(page).to have_content('Your account has been updated successfully.')
   end
 
   scenario 'authenticated user edits profile incorrectly' do
@@ -51,7 +51,7 @@ feature 'user edits profile', %Q{
 
     click_button 'Update Profile'
 
-    expect(page).to have_content('cannot be blank.')
+    expect(page).to have_content("can't be blank")
   end
-  
+
 end
