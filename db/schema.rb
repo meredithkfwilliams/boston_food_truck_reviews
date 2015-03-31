@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330193132) do
+ActiveRecord::Schema.define(version: 20150331144926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,32 +32,9 @@ ActiveRecord::Schema.define(version: 20150330193132) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id",    null: false
-    t.integer  "truck_id",   null: false
+    t.integer  "vendor_id",  null: false
     t.integer  "rating",     null: false
     t.text     "body",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "truck_categories", force: :cascade do |t|
-    t.integer  "category_id", null: false
-    t.integer  "truck_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "truck_location_schedules", force: :cascade do |t|
-    t.integer  "truck_id",    null: false
-    t.integer  "location_id", null: false
-    t.string   "weekday",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "trucks", force: :cascade do |t|
-    t.string   "truck_name",                 null: false
-    t.integer  "owner_id"
-    t.boolean  "viewable",   default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,5 +56,28 @@ ActiveRecord::Schema.define(version: 20150330193132) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vendor_categories", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.integer  "vendor_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendor_location_schedules", force: :cascade do |t|
+    t.integer  "vendor_id",   null: false
+    t.integer  "location_id", null: false
+    t.string   "weekday",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendors", force: :cascade do |t|
+    t.string   "vendor_name",                 null: false
+    t.integer  "owner_id"
+    t.boolean  "viewable",    default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
