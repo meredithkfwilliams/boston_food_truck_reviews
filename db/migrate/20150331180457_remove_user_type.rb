@@ -1,5 +1,4 @@
 class RemoveUserType < ActiveRecord::Migration
-
   def up
     change_column :users, :user_type, :string, null: false, default: "Member"
   end
