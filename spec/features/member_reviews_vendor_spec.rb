@@ -6,7 +6,6 @@ feature 'member posts vendor review', %{
   So that I can share my experience with other users
 } do
 
-
   scenario 'visitor tries to post a vendor review' do
     vendor = FactoryGirl.create(:vendor)
     visit vendor_path(vendor)
