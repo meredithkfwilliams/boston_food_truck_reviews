@@ -7,25 +7,31 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">FoodTruck</a></h1>
-      </li>
-    </ul>
+  <div class="row">
+    <div class="large-3 columns">
+      <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+    </div>
+    <div class="large-9 columns">
+      <ul class="right button-group">
 
-    <section class="top-bar-section">
-      <ul class="right">
+        <li><%= link_to 'Home', root_path, class: "button" %></li>
+        <li><%= link_to 'Vendors', vendors_path, class: "button" %></li>
+        <li><%= link_to 'Locations', locations_path, class: "button" %></li>
+
         <%- if current_user -%>
-          <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button" %></li>
+        <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "button" %></li>
+
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path, class: "button" %></li>
+        <li><%= link_to 'Sign In', new_user_session_path, class: "button" %></li>
         <%- end -%>
+
       </ul>
-    </section>
-  </nav>
+    </div>
+  </div>
+
+
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -37,5 +43,26 @@
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
 </body>
 </html>
