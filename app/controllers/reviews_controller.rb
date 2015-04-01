@@ -1,5 +1,4 @@
-class VendorsController < ApplicationController
+class ReviewsController < ApplicationController
   def new
-  binding.pry
   end
 end
