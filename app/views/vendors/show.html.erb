@@ -36,41 +36,40 @@
 
   </div>
 
-  </div>
-
-
-
-
-
+</div>
 
   <div class="row">
 
   <div class="large-12 columns">
    <div class="radius panel">
 
+   <div>
+     <h3>Reviews:</h3>
+     <% @reviews.each do |review| %>
+       <div>
+         <p><%= review.rating %></p>
+         <p><%= review.body %></p>
+       </div>
+       <% end %>
+   </div>
+
    <form>
      <div class="row collapse">
+       <h3>Add Review:</h3>
 
        <div class="large-10 small-8 columns">
          <input type="text"/>
        </div>
 
-       <div class="large-2 small-3 columns">
-         <a href="#" class="postfix button expand">Search</a>
-       </div>
-
      </div>
    </form>
 
+
+
   </div>
   </div>
 
   </div>
-
-
-
-
-
 
   <div class="row">
 
