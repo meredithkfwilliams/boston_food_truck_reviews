@@ -1,5 +1,4 @@
 class RemoveVendorsOwnerColumn < ActiveRecord::Migration
-
   def up
     remove_column :vendors, :owner_id, :string
   end
@@ -7,5 +6,4 @@ class RemoveVendorsOwnerColumn < ActiveRecord::Migration
   def down
     add_column :vendors, :owner_id, :string
   end
-  
 end
