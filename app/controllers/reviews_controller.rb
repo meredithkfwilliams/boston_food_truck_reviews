@@ -1,7 +1,4 @@
 class ReviewsController < ApplicationController
-  def new
-  end
-
   def create
     #is this the proper way to pass in params?
     new_review_data = review_params
@@ -18,5 +15,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:vendor_id, :body, :rating, :user_id)
   end
-
 end
