@@ -13,9 +13,9 @@ FactoryGirl.define do
   end
 
   factory :review do
-    user_id 1
-    vendor_id 1
     rating 4
-    sequence(:body) { |n| " #{n} GREAT FOOD YEAHHHHHHHHHHHHHHH" } 
+    body "This is a test review lala lala lala"
+    vendor
+    user
   end
 end

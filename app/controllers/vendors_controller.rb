@@ -5,5 +5,14 @@ class VendorsController < ApplicationController
 
   def show
     @vendor = Vendor.find(params[:id])
+    @reviews = @vendor.reviews
+    @review = Review.new
+  end
+
+  def new
+    @vendor = Vendor.new
+  end
+
+  def create
   end
 end

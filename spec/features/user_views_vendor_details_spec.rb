@@ -19,10 +19,8 @@ feature 'user views vendor details', %{
 
   scenario 'visitor views vendor details to view comments' do
     vendor = FactoryGirl.create(:vendor)
-    review1 = FactoryGirl.create(:review)
-    review2 = FactoryGirl.create(:review)
-    visit vendor_reviews_path(vendor)
-    expect(page).to have_content('1 GREAT')
-    expect(page).to have_content('2 GREAT')
+    review = FactoryGirl.create(:review, vendor: vendor)
+    visit vendor_path(vendor)
+    expect(page).to have_content(review.body)
   end
 end
