@@ -5,5 +5,6 @@ class VendorsController < ApplicationController
 
   def show
     @vendor = Vendor.find(params[:id])
+    @reviews = Review.where(vendor_id: @vendor)
   end
 end
