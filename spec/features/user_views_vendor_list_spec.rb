@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user views vendor details', %{
+feature 'user views vendor list', %{
   As visitor
   I want to view a list of all available food trucks/vendors
   So that I can decide what food truck/vendors I want to visit
@@ -16,15 +16,11 @@ feature 'user views vendor details', %{
   # * I should be able to see the list of vendors.
 
   scenario 'visitor can view the list of vendors via the vendors link' do
-    visit root_path
-    expect(page).to have_content('View all vendors')
-    click_link 'View all vendors'
-    expect(page).to have_content('Vendor List')
+    visit vendors_path
+    expect(page).to have_content('Vendors')
+    vendor = FactoryGirl.create(:vendor)
+    click_link 'Vendors'
+    expect(page).to have_content(vendor.vendor_name)
   end
 
-  scenario 'visitor views list of vendors successfully' do
-    vendor = FactoryGirl.create(:vendor)
-    visit vendors_path
-    expect(page).to have_content('Vendor 1')
-  end
 end

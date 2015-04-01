@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :locations
   end
 
+  resources :vendors do
+    resources :reviews
+  end
+
   resources :locations
 
 end
