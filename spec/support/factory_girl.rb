@@ -10,7 +10,6 @@ FactoryGirl.define do
 
   factory :vendor do
     sequence(:vendor_name) { |n| "Vendor #{n}" }
-    sequence(:owner_id) { |n| n }
     viewable true
   end
 end
