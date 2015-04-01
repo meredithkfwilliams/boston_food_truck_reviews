@@ -1,5 +1,4 @@
 require 'factory_girl'
-
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
@@ -11,5 +10,12 @@ FactoryGirl.define do
   factory :vendor do
     sequence(:vendor_name) { |n| "Vendor #{n}" }
     viewable true
+  end
+
+  factory :review do
+    user_id 1
+    vendor_id 1
+    rating 4
+    sequence(:body) { |n| " #{n} GREAT FOOD YEAHHHHHHHHHHHHHHH" } 
   end
 end

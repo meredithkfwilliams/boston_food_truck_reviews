@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-feature 'user views vendor details', %Q{
+feature 'user views vendor details', %{
   As a visitor
   I want to view the details of a specific truck/vendor
   So that I can learn more about the truck/vendor I’m interested in visiting
@@ -8,24 +7,22 @@ feature 'user views vendor details', %Q{
   # Acceptance Criteria
 
   # * As a visitor
-  # * When I visit the home page
-  # * I should be able to click on a link to view all vendors.
+  # * When I visit a specific vendors page
+  # * I should be able to see the details of and reviews for said vendor
 
-  # * As a visitor
-  # * When I visit the vendors page
-  # * I should be able to see the list of vendors.
-
-  scenario 'visitor can view the list of vendors via the vendors link' do
-    visit root_path
-    expect(page).to have_content('View all vendors')
-    click_link 'View all vendors'
-    expect(page).to have_content('Vendor List')
-  end
-
-  scenario 'visitor views list of vendors successfully' do
+  scenario 'visitor views details of a specific vendor' do
     vendor = FactoryGirl.create(:vendor)
     visit vendors_path
+    click_link vendor.vendor_name
     expect(page).to have_content('Vendor 1')
   end
 
+  scenario 'visitor views vendor details to view comments' do
+    vendor = FactoryGirl.create(:vendor)
+    review1 = FactoryGirl.create(:review)
+    review2 = FactoryGirl.create(:review)
+    visit vendor_reviews_path(vendor)
+    expect(page).to have_content('1 GREAT')
+    expect(page).to have_content('2 GREAT')
+  end
 end
