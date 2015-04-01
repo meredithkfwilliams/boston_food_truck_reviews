@@ -14,8 +14,8 @@
     <div class="large-9 columns">
       <ul class="right button-group">
 
-        <li><%= link_to 'Vendors', new_user_registration_path, class: "button" %></li>
-        <li><%= link_to 'Locations', new_user_registration_path, class: "button" %></li>
+        <li><%= link_to 'Vendors', vendors_path, class: "button" %></li>
+        <li><%= link_to 'Locations', locations_path, class: "button" %></li>
 
         <%- if current_user -%>
         <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button" %></li>
