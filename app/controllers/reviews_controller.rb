@@ -12,9 +12,6 @@ class ReviewsController < ApplicationController
     if review.save
       flash[:notice] = ['Review added.']
       redirect_to "/vendors/#{params[:vendor_id]}"
-    else
-      flash[:notice] = review.errors.full_messages
-      redirect_to "/vendors/#{params[:vendor_id]}"
     end
   end
 
