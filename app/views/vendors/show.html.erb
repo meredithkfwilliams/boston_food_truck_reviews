@@ -59,25 +59,21 @@
        <%= form_for [@vendor, @review] do |f| %>
        <%= f.label :radio_button, "Rating" %>
        <%= f.radio_button(:rating, "1") %>
-       <%= f.label(:rating_1, "1") %><br />
+       <%= f.label(:rating_1, "1") %>
        <%= f.radio_button(:rating, "2") %>
-       <%= f.label(:rating_2, "2") %><br />
+       <%= f.label(:rating_2, "2") %>
        <%= f.radio_button(:rating, "3") %>
-       <%= f.label(:rating_3, "3") %><br />
+       <%= f.label(:rating_3, "3") %>
        <%= f.radio_button(:rating, "4") %>
-       <%= f.label(:rating_4, "4") %><br />
+       <%= f.label(:rating_4, "4") %>
        <%= f.radio_button(:rating, "5") %>
-       <%= f.label(:rating_5, "5") %><br />
+       <%= f.label(:rating_5, "5") %>
 
-       <%= f.label :body, "Add Review:" %>
-       <%= f.text_field :body %><br>
+       <%= f.label :body, "Comments:" %>
+       <%= f.text_field :body %>
+
        <%= f.submit %>
        <% end %>
-
-       <div class="large-10 small-8 columns">
-         <input type="text"/>
-       </div>
-
      </div>
    </form>
 

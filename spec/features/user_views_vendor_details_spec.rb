@@ -14,7 +14,7 @@ feature 'user views vendor details', %{
     vendor = FactoryGirl.create(:vendor)
     visit vendors_path
     click_link vendor.vendor_name
-    expect(page).to have_content('Vendor 1')
+    expect(page).to have_content(vendor.vendor_name)
   end
 
   scenario 'visitor views vendor details to view comments' do
