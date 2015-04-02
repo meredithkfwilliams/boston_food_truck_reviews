@@ -12,6 +12,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    Review.find(params[:id]).destroy
+    redirect_to "/vendors/#{params[:vendor_id]}"
+  end
+
   private
 
   def review_params

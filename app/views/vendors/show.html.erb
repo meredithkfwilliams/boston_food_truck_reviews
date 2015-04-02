@@ -43,7 +43,7 @@
            <p><%= review.body %></p>
             <% if signed_in? %>
              <% if current_user.id == review.user_id %>
-             <%= button_to "Delete Comment", vendor_review_path(@vendor, review), method: :delete %>
+             <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
              <% end %>
             <% end %>
          </div>

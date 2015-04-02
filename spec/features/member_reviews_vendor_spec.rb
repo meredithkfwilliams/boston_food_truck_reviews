@@ -35,4 +35,25 @@ feature 'member posts vendor review', %{
 
     expect(page).to have_no_content('Create Review')
   end
+
+  scenario 'member should be able to delete a review if theyre the owner of said review' do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
+    vendor = FactoryGirl.create(:vendor)
+    review = FactoryGirl.create(:review, vendor: vendor, user: user)
+    visit vendor_path(vendor)
+
+    click_button 'Delete Review'
+    expect(page).to have_no_content(review)
+  end
+  # 
+  # scenario 'member should be able to edit a review of theyre the owner of said review' do
+  #   user = FactoryGirl.create(:user)
+  #   sign_in(user)
+  #   vendor = FactoryGirl.create(:vendor)
+  #   review = FactoryGirl.create(:review, vendor: vendor, user: user)
+  #   visit vendor_path(vendor)
+  #   click_button 'Edit Review'
+  #   fill_in 'Comment:', with: 'Hello'
+  # end
 end
