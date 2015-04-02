@@ -1,16 +1,11 @@
 body {
-  background-image: url("http://i.imgur.com/y6o43z3.jpg");
+  background-image: image-url("bg1.jpg");
   background-repeat: no-repeat;
   background-position: center top;
 }
 
 #footer_margin {
   margin-bottom: 100px;
-}
-
-#transparent {
-  // background-image: url("http://i.imgur.com/mhOpMly.png");
-  // background-repeat: repeat-y;
 }
 
 ul.right.button-group {

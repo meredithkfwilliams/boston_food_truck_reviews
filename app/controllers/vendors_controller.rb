@@ -24,7 +24,7 @@ class VendorsController < ApplicationController
 
   protected
   def vendor_params
-    params.require(:vendor).permit(:vendor_name, :viewable)
+    params.require(:vendor).permit(:vendor_name)
   end
 
 end

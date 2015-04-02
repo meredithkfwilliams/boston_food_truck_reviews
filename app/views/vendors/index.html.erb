@@ -11,14 +11,7 @@
 
     <div>
       <% if user_signed_in? %>
-        <h5>Add a Vendor</h5>
-        <%= form_for @new_vendor do |f| %>
-
-        <%= f.label :vendor_name, 'Vendor Name' %>
-        <%= f.text_field :vendor_name %>
-
-        <%= f.submit "Add Vendor" %>
-        <% end %>
+        <%= render "vendor_form" %>
       <% end %>
     </div>
 
@@ -28,15 +21,15 @@
     <div class="row">
 
       <% @vendors.each do |vendor| %>
-      <div class="large-4 small-6 columns">
-        <%= link_to image_tag("http://placehold.it/1000x1000&text=Thumbnail"), vendor_path(vendor) %>
-        <div class="panel">
-          <h5><%= link_to vendor.vendor_name, vendor_path(vendor) %></h5>
-          <% vendor.categories.each do |cat| %>
-          <h6><%= cat.category_name %></h6>
-          <% end %>
+        <div class="large-4 small-6 columns">
+          <%= link_to image_tag("http://placehold.it/1000x1000&text=Thumbnail"), vendor_path(vendor) %>
+            <div class="panel">
+              <h5><%= link_to vendor.vendor_name, vendor_path(vendor) %></h5>
+              <% vendor.categories.each do |cat| %>
+              <h6><%= cat.category_name %></h6>
+              <% end %>
+            </div>
         </div>
-      </div>
       <% end %>
 
     </div>
