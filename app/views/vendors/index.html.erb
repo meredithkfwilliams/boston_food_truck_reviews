@@ -1,4 +1,6 @@
 <div class="row">
+  <% @vendors.each do |vendor| %>
+
   <div class="large-4 small-12 columns">
 
     <img src="http://placehold.it/500x500&text=Logo">
@@ -18,8 +20,8 @@
         <img src="http://placehold.it/1000x1000&text=Thumbnail">
 
         <div class="panel">
-          <h5>Item Name</h5>
-          <h6 class="subheader">$000.00</h6>
+          <h5><%= link_to vendor.vendor_name, vendor_path(vendor) %></h5>
+          <h6 class="subheader">Fenway</h6>
         </div>
       </div>
 
@@ -70,4 +72,5 @@
     </div>
 
   </div>
+  <% end %>
 </div>
