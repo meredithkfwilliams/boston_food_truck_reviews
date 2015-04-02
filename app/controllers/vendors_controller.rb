@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.where(viewable: true)
     @new_vendor = Vendor.new
   end
 
