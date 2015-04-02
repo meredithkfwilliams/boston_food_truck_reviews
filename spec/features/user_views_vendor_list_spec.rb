@@ -7,16 +7,11 @@ feature 'user views vendor list', %{
 } do
   # Acceptance Criteria
 
-  # * As a visitor
-  # * When I visit the home page
-  # * I should be able to click on a link to view all vendors.
-
-  # * As a visitor
-  # * When I visit the vendors page
-  # * I should be able to see the list of vendors.
+  # All vendors should be visible on this page
+  # I should be able to get to this page via clicking on a link from the home page
 
   scenario 'visitor can view the list of vendors via the vendors link' do
-    visit vendors_path
+    visit root_path
     expect(page).to have_content('Vendors')
     vendor = FactoryGirl.create(:vendor)
     click_link 'Vendors'

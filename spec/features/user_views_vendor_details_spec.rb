@@ -6,9 +6,7 @@ feature 'user views vendor details', %{
 } do
   # Acceptance Criteria
 
-  # * As a visitor
-  # * When I visit a specific vendors page
-  # * I should be able to see the details of and reviews for said vendor
+  # Visitors should be able to see the details of and reviews for a vendor
 
   scenario 'visitor views details of a specific vendor' do
     vendor = FactoryGirl.create(:vendor)
