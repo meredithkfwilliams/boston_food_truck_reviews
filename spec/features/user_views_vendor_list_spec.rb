@@ -7,8 +7,8 @@ feature 'user views vendor list', %{
 } do
   # Acceptance Criteria
 
-  # All vendors should be visible on this page
-  # I should be able to get to this page via clicking on a link from the home page
+  # All vendors should be visible on this page.
+  # I should be able to get to this page via vendor link.
 
   scenario 'visitor can view the list of vendors via the vendors link' do
     visit root_path
