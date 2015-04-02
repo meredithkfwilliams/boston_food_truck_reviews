@@ -10,13 +10,15 @@
     </div>
 
     <div>
-      <h5>Add a Vendor</h5>
-      <%= form_for @new_vendor do |f| %>
+      <% if user_signed_in? %>
+        <h5>Add a Vendor</h5>
+        <%= form_for @new_vendor do |f| %>
 
-      <%= f.label :vendor_name %>
-      <%= f.text_field :vendor_name %>
+        <%= f.label :vendor_name, 'Vendor Name' %>
+        <%= f.text_field :vendor_name %>
 
-      <%= f.submit %>
+        <%= f.submit "Add Vendor" %>
+        <% end %>
       <% end %>
     </div>
 

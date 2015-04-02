@@ -1,3 +1,31 @@
+body {
+  background-image: url("http://i.imgur.com/y6o43z3.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+#footer_margin {
+  margin-bottom: 100px;
+}
+
+#transparent {
+  // background-image: url("http://i.imgur.com/mhOpMly.png");
+  // background-repeat: repeat-y;
+}
+
 ul.right.button-group {
   margin-top: 10px;
+}
+
+button, .button {
+  background-color: #2ac535;
+  transition: background-color 300ms ease-out;
+}
+
+button, .button:hover {
+  background-color: #fc8007;
+  transition-property: background-color #fc8007;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+  transition-delay: initial;
 }
