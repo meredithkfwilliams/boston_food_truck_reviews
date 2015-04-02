@@ -6,19 +6,9 @@ feature 'member posts vendor review', %{
   So that I can share my experience with other users
 } do
 
-  scenario 'visitor tries to post a vendor review' do
-    vendor = FactoryGirl.create(:vendor)
-    visit vendor_path(vendor)
-    expect(page).to have_no_content('You')
-  end
-
   scenario 'member posts a new review for a specific vendor' do
     member = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign In'
-    fill_in 'Email', with: member.email
-    fill_in 'Password', with: member.password
-    click_button 'Log in'
+    sign_in(member)
     vendor = FactoryGirl.create(:vendor)
     visit vendor_path(vendor)
 
@@ -26,5 +16,16 @@ feature 'member posts vendor review', %{
     choose '3'
     click_button 'Create Review'
     expect(page).to have_content('Peanut')
+  end
+
+  scenario 'member tries to post a vendor review' do
+    member = FactoryGirl.create(:user)
+    sign_in(member)
+    vendor = FactoryGirl.create(:vendor)
+    visit vendor_path(vendor)
+
+    click_button 'Create Review'
+    expect(page).to have_content("Rating can't be blank")
+    expect(page).to have_content("Body can't be blank")
   end
 end
