@@ -28,4 +28,11 @@ feature 'member posts vendor review', %{
     expect(page).to have_content("Rating can't be blank")
     expect(page).to have_content("Body can't be blank")
   end
+
+  scenario "visitor shouldn't be able to see the review form" do
+    vendor = FactoryGirl.create(:vendor)
+    visit vendor_path(vendor)
+
+    expect(page).to have_no_content('Create Review')
+  end
 end
