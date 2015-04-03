@@ -1,5 +1,4 @@
 require 'factory_girl'
-
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
@@ -19,7 +18,3 @@ FactoryGirl.define do
     vendor
     user
   end
-
-
-
-end
