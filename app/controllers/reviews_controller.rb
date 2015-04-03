@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
   def create
     @vendor = Vendor.find(params[:vendor_id])
-    @review = @vendor.reviews.new(review_params)
-    @review.user = current_user
-    if @review.save
+    review = @vendor.reviews.new(review_params)
+    review.user = current_user
+    if review.save
       flash[:notice] = 'Review added.'
       redirect_to "/vendors/#{params[:vendor_id]}"
     else
