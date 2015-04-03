@@ -11,6 +11,7 @@ class VendorsController < ApplicationController
   end
 
   def create
+    authenticate_user!
     @vendor = Vendor.create(vendor_params)
     @vendor.viewable = false
     if @vendor.save

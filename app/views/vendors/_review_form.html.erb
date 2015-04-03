@@ -1,23 +1,11 @@
-<form>
-  <div class="row collapse">
-    <h3>Add Review:</h3>
-      <%= form_for [@vendor, @review] do |f| %>
-      <%= f.label :radio_button, "Rating" %>
-      <%= f.radio_button(:rating, "1") %>
-      <%= f.label(:rating_1, "1") %>
-      <%= f.radio_button(:rating, "2") %>
-      <%= f.label(:rating_2, "2") %>
-      <%= f.radio_button(:rating, "3") %>
-      <%= f.label(:rating_3, "3") %>
-      <%= f.radio_button(:rating, "4") %>
-      <%= f.label(:rating_4, "4") %>
-      <%= f.radio_button(:rating, "5") %>
-      <%= f.label(:rating_5, "5") %>
-
-      <%= f.label :body, "Comments:" %>
-      <%= f.text_field :body %>
-
-      <%= f.submit %>
+<div class="row collapse">
+  <h3>Add Review:</h3>
+  <%= form_for [@vendor, @review] do |f| %>
+    <%= f.collection_radio_buttons(:rating, (1..5), :to_s, :to_s) do |b| %>
+      <%= b.label(:"data-value" => b.value) { b.radio_button + b.text } %>
     <% end %>
-  </div>
-</form>
+    <%= f.label :body, "Comments:" %>
+    <%= f.text_field :body %>
+    <%= f.submit %>
+  <% end %>
+</div>
