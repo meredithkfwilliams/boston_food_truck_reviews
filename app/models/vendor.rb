@@ -5,6 +5,5 @@ class Vendor < ActiveRecord::Base
   has_many :vendor_location_schedules
   has_many :locations, through: :vendor_location_schedules
 
-  validates :vendor_name, presence: true
-  validates :viewable, presence: true
+  validates_presence_of :vendor_name
 end

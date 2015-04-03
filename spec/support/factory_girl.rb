@@ -12,4 +12,14 @@ FactoryGirl.define do
     sequence(:vendor_name) { |n| "Vendor #{n}" }
     viewable true
   end
+
+  factory :review do
+    rating 4
+    body "This is a test review lala lala lala"
+    vendor
+    user
+  end
+
+
+
 end
