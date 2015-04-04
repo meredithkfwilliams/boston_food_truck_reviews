@@ -1,0 +1,8 @@
+<h5>Add a Vendor</h5>
+<%= form_for @new_vendor do |f| %>
+
+  <%= f.label :vendor_name, 'Vendor Name' %>
+  <%= f.text_field :vendor_name %>
+
+  <%= f.submit "Add Vendor" %>
+<% end %>

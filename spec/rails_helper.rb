@@ -52,3 +52,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def sign_in(member)
+  visit root_path
+  click_link 'Sign In'
+  fill_in 'Email', with: member.email
+  fill_in 'Password', with: member.password
+  click_button 'Log in'
+end

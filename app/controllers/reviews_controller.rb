@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     review = @vendor.reviews.new(review_params)
     review.user = current_user
     if review.save
-      flash[:notice] = ['Review added.']
+      flash[:notice] = 'Review added.'
       redirect_to "/vendors/#{params[:vendor_id]}"
     else
       flash[:notice] = review.errors.full_messages
