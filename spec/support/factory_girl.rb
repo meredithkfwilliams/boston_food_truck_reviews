@@ -18,3 +18,4 @@ FactoryGirl.define do
     vendor
     user
   end
+end

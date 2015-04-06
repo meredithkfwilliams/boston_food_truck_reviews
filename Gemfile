@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails', "5.5.1.0"
+gem 'kaminari'
+
 
 group :development, :test do
   gem 'rspec-rails'
