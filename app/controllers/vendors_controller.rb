@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
   def index
-    @vendors = Vendor.where(viewable: true).page params[:page]
+    @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
     @new_vendor = Vendor.new
   end
 
