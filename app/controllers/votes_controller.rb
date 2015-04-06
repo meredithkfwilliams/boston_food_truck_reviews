@@ -15,9 +15,7 @@ class VotesController < ApplicationController
       review = @review
       review.update_attributes(vote_value: review.vote_value += vote.value)
       flash[:notice] = 'Thanks for voting!'
-      redirect_to vendor_path(@vendor), format: "html"
-    else
-      redirect_to vendor_path(@vendor)
     end
+    redirect_to vendor_path(@vendor), format: "html"
   end
 end
