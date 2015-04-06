@@ -1,5 +1,4 @@
 class VotesController < ApplicationController
-
   def create
     @vendor = Vendor.find(params[:vendor_id])
     @review = @vendor.reviews.find(params[:review_id])
@@ -13,13 +12,12 @@ class VotesController < ApplicationController
     vote.user = current_user
 
     if vote.save
-      saved_review = @review
-      saved_review.update_attributes(vote_value: saved_review.vote_value += vote.value)
+      review = @review
+      review.update_attributes(vote_value: review.vote_value += vote.value)
       flash[:notice] = 'Thanks for voting!'
       redirect_to vendor_path(@vendor), format: "html"
     else
-      flash[:notice] = vote.errors.full_messages
       redirect_to vendor_path(@vendor)
     end
-  end
+  end  
 end

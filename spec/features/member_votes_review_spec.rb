@@ -10,7 +10,7 @@ feature 'member votes on a review', %{
     member = FactoryGirl.create(:user)
     sign_in(member)
     vendor = FactoryGirl.create(:vendor)
-    review = FactoryGirl.create(:review, vendor: vendor, user: member)
+    FactoryGirl.create(:review, vendor: vendor, user: member)
     visit vendor_path(vendor)
 
     click_button 'Up'
@@ -21,7 +21,7 @@ feature 'member votes on a review', %{
     member = FactoryGirl.create(:user)
     sign_in(member)
     vendor = FactoryGirl.create(:vendor)
-    review = FactoryGirl.create(:review, vendor: vendor, user: member)
+    FactoryGirl.create(:review, vendor: vendor, user: member)
     visit vendor_path(vendor)
 
     click_button 'Down'
@@ -32,7 +32,7 @@ feature 'member votes on a review', %{
     member = FactoryGirl.create(:user)
     sign_in(member)
     vendor = FactoryGirl.create(:vendor)
-    review = FactoryGirl.create(:review, vendor: vendor, user: member)
+    FactoryGirl.create(:review, vendor: vendor, user: member)
     visit vendor_path(vendor)
 
     click_button 'Up'
