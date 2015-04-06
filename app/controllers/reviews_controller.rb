@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   def create
+    authenticate_user!
     @vendor = Vendor.find(params[:vendor_id])
     review = @vendor.reviews.new(review_params)
     review.user = current_user
