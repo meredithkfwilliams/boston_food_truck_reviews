@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     Review.find(params[:id]).destroy
+    Vote.where(review_id: params[:id]).destroy_all
     redirect_to "/vendors/#{params[:vendor_id]}"
   end
 
