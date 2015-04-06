@@ -6,7 +6,7 @@ class Vote < ActiveRecord::Base
   validates :review, presence: true
   validates :user_id, uniqueness: {
     scope: :review_id, message: "User can only vote once per review."
-    }
+  }
 
   def self.user_already_voted(user, review)
     Vote.where("(user_id = #{user.id} AND review_id = #{review})")

@@ -19,5 +19,5 @@ class VotesController < ApplicationController
     else
       redirect_to vendor_path(@vendor)
     end
-  end  
+  end
 end
