@@ -11,12 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails', "5.5.1.0"
-<<<<<<< HEAD
 gem 'kaminari'
-
-=======
 gem 'rails_12factor', group: :production
->>>>>>> 515e1b08c8cd51ce8f1b0b2bc6db24567fe25205
 
 group :development, :test do
   gem 'rspec-rails'
