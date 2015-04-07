@@ -7,7 +7,7 @@ RSpec.describe Vote, type: :model do
   let(:user) { User.create(email: "goofy@gmail.com", password: 'password') }
   let(:vendor) { Vendor.create(vendor_name: "Yum") }
   let(:review) do
-   Review.create(user_id: user.id, vendor_id: vendor.id, rating: 1, body: 'Hi')
+    Review.create(user_id: user.id, vendor_id: vendor.id, rating: 1, body: 'Hi')
   end
   @value = 1
 
