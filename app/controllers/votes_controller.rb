@@ -7,17 +7,17 @@ class VotesController < ApplicationController
     if !Vote.user_already_voted(current_user, @review.id).empty?
       if !Vote.same_vote(current_user, @review, @value)
         flash[:notice] = 'You already did that!'
-      else Vote.same_vote(current_user, @review, @value)
+      else
         Vote.destroy_user_vote(current_user, @review)
         @review = @vendor.reviews.find(params[:review_id])
       end
     end
 
-      vote = @review.votes.new(vote_params)
-      vote.user = current_user
-      if vote.save
-        flash[:notice] = 'Thanks for voting!'
-      end
+    vote = @review.votes.new(vote_params)
+    vote.user = current_user
+    if vote.save
+      flash[:notice] = 'Thanks for voting!'
+    end
     redirect_to vendor_path(@vendor)
   end
 
