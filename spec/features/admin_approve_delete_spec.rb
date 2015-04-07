@@ -7,28 +7,21 @@ feature 'admin manages vendor page', %{
 } do
 
   let!(:category) { FactoryGirl.create(:category) }
+  let!(:vendor) { FactoryGirl.create(:vendor) }
+  let!(:admin) { FactoryGirl.create(:user, user_type: 'Admin') }
 
   scenario 'admin approves a valid vendor' do
-    member = FactoryGirl.create(:user, user_type: 'Admin')
-    sign_in(member)
-    visit vendors_path
-    fill_in 'Vendor Name', with: 'Crepe Truck'
-    select('Breakfast', from: 'vendor_category_ids')
-    click_button 'Add Vendor'
+    sign_in(admin)
+    create_vendor(vendor)
     click_button 'Approve'
     expect(page).to have_content('Vendor Updated')
-    expect(page).to have_content('Crepe Truck')
+    expect(page).to have_content(vendor.vendor_name)
   end
 
   scenario 'admin deletes an unacceptable vendor' do
-    member = FactoryGirl.create(:user, user_type: 'Admin')
-    sign_in(member)
-    visit vendors_path
-    fill_in 'Vendor Name', with: 'Crepe Truck'
-    select('Breakfast', from: 'vendor_category_ids')
-    click_button 'Add Vendor'
+    sign_in(admin)
+    create_vendor(vendor)
     click_button 'Delete'
     expect(page).to have_content('Vendor Deleted')
-    expect(page).to_not have_content('Crepe Truck')
   end
 end

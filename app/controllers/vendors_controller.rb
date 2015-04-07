@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_user!, only: [:update, :destory]
+  before_action :authorize_user!, only: [:destroy]
 
   def index
     @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
@@ -28,12 +28,9 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    if Vendor.approve(@vendor)
+    if @vendor.approve
       flash[:notice] = "Vendor Updated"
       redirect_to vendors_path
-    else
-      flash[:notice] = "Error"
-      render vendors_path
     end
   end
 

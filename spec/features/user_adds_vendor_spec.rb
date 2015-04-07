@@ -24,8 +24,8 @@ feature 'member adds a vendor', %{
   end
 
   scenario 'admin tries to add a new vendor' do
-    member = FactoryGirl.create(:user, user_type: 'Admin')
-    sign_in(member)
+    admin = FactoryGirl.create(:user, user_type: 'Admin')
+    sign_in(admin)
     visit vendors_path
     fill_in 'Vendor Name', with: 'Crepe Truck'
     select('Breakfast', from: 'vendor_category_ids')

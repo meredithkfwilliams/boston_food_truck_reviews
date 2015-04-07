@@ -7,7 +7,7 @@ class Vendor < ActiveRecord::Base
 
   validates_presence_of :vendor_name
 
-  def self.approve(vendor)
-    vendor.update(viewable: true)
+  def approve
+    viewable = true
   end
 end
