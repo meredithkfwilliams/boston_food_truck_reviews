@@ -6,9 +6,8 @@ RSpec.describe Vote, type: :model do
   it { should validate_presence_of(:review) }
   let(:user) { User.create(email: "goofy@gmail.com", password: 'password') }
   let(:vendor) { Vendor.create(vendor_name: "Yum") }
-  let(:review) {
-    Review.create( user_id: user.id, vendor_id: vendor.id, rating: 1)
-  }
+  let(:review) { Review.create(
+    user_id: user.id, vendor_id: vendor.id, rating: 1, body: 'Hi') }
   @value = 1
 
   describe "self.user_already_voted(user, review)" do
