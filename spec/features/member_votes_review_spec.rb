@@ -7,36 +7,28 @@ feature 'member votes on a review', %{
 } do
 
   scenario 'member posts up-vote to a review' do
-    member = FactoryGirl.create(:user)
-    sign_in(member)
-    vendor = FactoryGirl.create(:vendor)
-    FactoryGirl.create(:review, vendor: vendor, user: member)
-    visit vendor_path(vendor)
-
+    review_and_vote
     click_button 'Up'
     expect(page).to have_content 'Overall Vote Score: 1'
   end
 
   scenario 'member posts down-vote to a review' do
-    member = FactoryGirl.create(:user)
-    sign_in(member)
-    vendor = FactoryGirl.create(:vendor)
-    FactoryGirl.create(:review, vendor: vendor, user: member)
-    visit vendor_path(vendor)
-
+    review_and_vote
     click_button 'Down'
     expect(page).to have_content 'Overall Vote Score: -1'
   end
 
   scenario 'member up-votes then changes to down-vote' do
-    member = FactoryGirl.create(:user)
-    sign_in(member)
-    vendor = FactoryGirl.create(:vendor)
-    FactoryGirl.create(:review, vendor: vendor, user: member)
-    visit vendor_path(vendor)
-
+    review_and_vote
     click_button 'Up'
     click_button 'Down'
     expect(page).to have_content 'Overall Vote Score: -1'
+  end
+
+  scenario 'member votes up or down twice' do
+    review_and_vote
+    click_button 'Up'
+    click_button 'Up'
+    expect(page).to have_content 'You already did that!'
   end
 end

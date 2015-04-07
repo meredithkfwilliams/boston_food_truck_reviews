@@ -9,14 +9,17 @@ class Vote < ActiveRecord::Base
   }
 
   def self.user_already_voted(user, review)
-    Vote.where("(user_id = #{user.id} AND review_id = #{review})")
+    Vote.where(user_id: user.id, review_id: review)
+  end
+
+  def self.same_vote(user, review, value)
+    review_id = review.id
+    Vote.where(user_id: user.id, review_id: review_id, value: value).empty?
   end
 
   def self.destroy_user_vote(user, review)
     review_id = review.id
-    vote = Vote.where("(user_id = #{user.id} AND review_id = #{review_id})")
-    review = Review.find(review_id)
-    review.update_attributes(vote_value: review.vote_value -= vote.first.value)
+    vote = Vote.where(user_id: user.id, review_id: review_id)
     Vote.find(vote.first.id).destroy
   end
 end

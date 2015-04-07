@@ -60,3 +60,18 @@ def sign_in(member)
   fill_in 'Password', with: member.password
   click_button 'Log in'
 end
+
+def review_and_vote
+  member = FactoryGirl.create(:user)
+  sign_in(member)
+  vendor = FactoryGirl.create(:vendor)
+  FactoryGirl.create(:review, vendor: vendor, user: member)
+  visit vendor_path(vendor)
+end
+
+def review_vendor
+  member = FactoryGirl.create(:user)
+  sign_in(member)
+  vendor = FactoryGirl.create(:vendor)
+  visit vendor_path(vendor)
+end

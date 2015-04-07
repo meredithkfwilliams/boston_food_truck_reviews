@@ -7,4 +7,10 @@ class Review < ActiveRecord::Base
   validates_presence_of :vendor_id
   validates_presence_of :rating
   validates_presence_of :body
+
+  def vote_value
+    votes = self.votes
+    points = votes.pluck(:value)
+    points.sum
+  end
 end

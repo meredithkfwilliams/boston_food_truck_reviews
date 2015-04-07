@@ -36,27 +36,24 @@
    <div class="radius panel">
      <div>
        <h3>Reviews:</h3>
-       <% @reviews = @reviews.sort_by{|x| x.vote_value }.reverse %>
        <% @reviews.each do |review| %>
-         <div>
            Overall Vote Score: <%= review.vote_value %>
            <p> <%= review.user.email %> </p>
            <p>Rating: <%= review.rating %> out of 5</p>
            <p>Comments: <%= review.body %></p>
             <% if signed_in? %>
-            <%= form_for [@vendor, review, @vote ] do |f| %>
-            <%= f.hidden_field :vote_value, :value => 1 %>
-            <%= f.submit "Up" %>
+              <%= form_for [@vendor, review, @vote ] do |f| %>
+                <%= f.hidden_field :value, :value => 1 %>
+                <%= f.submit "Up" %>
+              <% end %>
+              <%= form_for [@vendor, review, @vote ] do |f| %>
+                <%= f.hidden_field :value, :value => -1 %>
+              <%= f.submit "Down" %>
             <% end %>
-            <%= form_for [@vendor, review, @vote ] do |f| %>
-            <%= f.hidden_field :vote_value, :value => -1 %>
-            <%= f.submit "Down" %>
+            <% if current_user.id == review.user_id %>
+              <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
             <% end %>
-             <% if current_user.id == review.user_id %>
-             <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
-             <% end %>
             <% end %>
-         </div>
        <% end %>
      </div>
 
