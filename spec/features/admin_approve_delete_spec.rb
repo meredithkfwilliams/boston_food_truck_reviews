@@ -6,6 +6,8 @@ feature 'admin manages vendor page', %{
   So that users can see appropriate vendors
 } do
 
+  let!(:category) { FactoryGirl.create(:category) }
+
   scenario 'admin approves a valid vendor' do
     member = FactoryGirl.create(:user, user_type: 'Admin')
     sign_in(member)

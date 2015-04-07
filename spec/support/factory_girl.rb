@@ -18,4 +18,8 @@ FactoryGirl.define do
     vendor
     user
   end
+
+  factory :category do
+    category_name 'Breakfast'
+  end
 end
