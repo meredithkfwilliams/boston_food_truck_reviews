@@ -7,7 +7,11 @@ class Vendor < ActiveRecord::Base
 
   validates_presence_of :vendor_name
 
-  def approve
-    viewable = true
+  def self.approve(vendor)
+    vendor.update(viewable: true)
+  end
+
+  def self.search(search)
+    Vendor.find(:all, :conditions => ['vendor_name ILIKE ?', "%#{search}%"])
   end
 end

@@ -6,6 +6,7 @@ class VendorsController < ApplicationController
     @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
     @new_vendor = Vendor.new
     @approvals = Vendor.where(viewable: false)
+    @search = Vendor.search(params[:search])
   end
 
   def show
@@ -28,7 +29,7 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    if @vendor.approve
+    if Vendor.approve(@vendor)
       flash[:notice] = "Vendor Updated"
       redirect_to vendors_path
     end
