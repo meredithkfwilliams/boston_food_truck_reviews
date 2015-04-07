@@ -1,7 +1,11 @@
 class VendorsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_user!, only: [:update, :destory]
+
   def index
     @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
     @new_vendor = Vendor.new
+    @approvals = Vendor.where(viewable: false)
   end
 
   def show
@@ -11,7 +15,6 @@ class VendorsController < ApplicationController
   end
 
   def create
-    authenticate_user!
     @vendor = Vendor.create(vendor_params)
     @vendor.viewable = false
     if @vendor.save
@@ -23,9 +26,25 @@ class VendorsController < ApplicationController
     end
   end
 
+  def update
+    @vendor = Vendor.find(params[:id])
+    if Vendor.approve(@vendor)
+      flash[:notice] = "Vendor Updated"
+      redirect_to vendors_path
+    else
+      flash[:notice] = "Error"
+      render vendors_path
+    end
+  end
+
+  def destroy
+    Vendor.find(params[:id]).destroy
+    flash[:notice] = "Vendor Deleted"
+    redirect_to vendors_path
+  end
+
   protected
   def vendor_params
     params.require(:vendor).permit(:vendor_name)
   end
-
 end

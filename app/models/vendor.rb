@@ -6,4 +6,8 @@ class Vendor < ActiveRecord::Base
   has_many :locations, through: :vendor_location_schedules
 
   validates_presence_of :vendor_name
+
+  def self.approve(vendor)
+    vendor.update(viewable: true)
+  end
 end

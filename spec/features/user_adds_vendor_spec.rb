@@ -15,8 +15,18 @@ feature 'member adds a vendor', %{
     member = FactoryGirl.create(:user)
     sign_in(member)
     visit vendors_path
-
     fill_in 'Vendor Name', with: 'Bacon Truck'
+    select('African', from: 'vendor_category_ids')
+    click_button 'Add Vendor'
+    expect(page).to have_content('Vendor added. Pending review.')
+  end
+
+  scenario 'admin tries to add a new vendor' do
+    member = FactoryGirl.create(:user, user_type: 'Admin')
+    sign_in(member)
+    visit vendors_path
+    fill_in 'Vendor Name', with: 'Crepe Truck'
+    select('African', from: 'vendor_category_ids')
     click_button 'Add Vendor'
     expect(page).to have_content('Vendor added. Pending review.')
   end
