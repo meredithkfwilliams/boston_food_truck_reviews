@@ -11,7 +11,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails', "5.5.1.0"
+gem 'kaminari'
 gem 'rails_12factor', group: :production
+gem 'carrierwave'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -21,6 +24,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 

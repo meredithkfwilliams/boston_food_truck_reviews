@@ -29,24 +29,4 @@ feature 'user deletes profile', %{
 
     expect(page).to have_content "Your account has been successfully cancelled."
   end
-
-  # scenario 'account owner deletes their profile' do
-  #   user_to_delete = FactoryGirl.create(:user)
-  #
-  #   malicious_user = FactoryGirl.create(:user)
-  #
-  #   visit new_user_session_path
-  #
-  #   fill_in 'Email', with: user.email
-  #   fill_in 'Password', with: user.password
-  #
-  #   click_button 'Log in'
-  #
-  #   click_link 'Edit Profile'
-  #
-  #   visit '/users/' + user_to_delete.id + '/delete'
-  #
-  #   expect(page).to have_content "Account successfully deleted"
-  # end
-
 end

@@ -5,7 +5,6 @@ feature 'user registers', %Q{
   I want to register
   So that I can create an account
 } do
-
   # Acceptance Criteria:
   # * I must specify a valid email address,
   #   password, and password confirmation

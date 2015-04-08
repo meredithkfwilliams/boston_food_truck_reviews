@@ -4,5 +4,7 @@
   <%= f.label :vendor_name, 'Vendor Name' %>
   <%= f.text_field :vendor_name %>
 
-  <%= f.submit "Add Vendor" %>
+  <%= f.collection_select(:category_ids, Category.all, :id, :category_name, { :prompt => 'Select a Category' } ) %>
+
+  <%= f.submit 'Add Vendor' %>
 <% end %>
