@@ -4,7 +4,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
-    user_type "member"
+    user_type "Member"
   end
 
   factory :vendor do
@@ -17,5 +17,9 @@ FactoryGirl.define do
     body "This is a test review lala lala lala"
     vendor
     user
+  end
+
+  factory :category do
+    category_name 'Breakfast'
   end
 end

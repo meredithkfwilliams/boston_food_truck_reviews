@@ -6,4 +6,16 @@ class User < ActiveRecord::Base
 
   has_many :votes
   has_many :reviews
+  
+  def admin?
+    user_type == "Admin"
+  end
+
+  def member?
+    user_type == "Member"
+  end
+
+  def vendor?
+    user_type == "Vendor"
+  end
 end
