@@ -3,10 +3,16 @@ class VendorsController < ApplicationController
   before_action :authorize_user!, only: [:destroy]
 
   def index
-    @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
+    if params[:search]
+      @vendors = Vendor.search(params[:search]).order("created_at DESC").page(params[:page]).per(9)
+      if @vendors.empty?
+        flash[:notice] = "We didn't find anything"
+      end
+    elsif params[:search].nil?
+      @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
+    end
     @new_vendor = Vendor.new
     @approvals = Vendor.where(viewable: false)
-    @search = Vendor.search(params[:search])
   end
 
   def show

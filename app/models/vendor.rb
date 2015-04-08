@@ -11,7 +11,7 @@ class Vendor < ActiveRecord::Base
     vendor.update(viewable: true)
   end
 
-  def self.search(search)
-    Vendor.find(:all, :conditions => ['vendor_name ILIKE ?', "%#{search}%"])
+  def self.search(query)
+    where("vendor_name ilike ?", "%#{query}%")
   end
 end
