@@ -60,3 +60,10 @@ def sign_in(member)
   fill_in 'Password', with: member.password
   click_button 'Log in'
 end
+
+def create_vendor(vendor)
+  visit vendors_path
+  fill_in 'Vendor Name', with: vendor.vendor_name
+  select('Breakfast', from: 'vendor_category_ids')
+  click_button 'Add Vendor'
+end

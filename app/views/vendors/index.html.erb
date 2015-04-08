@@ -10,8 +10,18 @@
     </div>
 
     <div>
+      <%= render "search_bar" %>
+    </div>
+
+    <div>
       <% if user_signed_in? %>
         <%= render "vendor_form" %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if current_user.try(:admin?) %>
+        <%= render "manage_vendors" %>
       <% end %>
     </div>
 

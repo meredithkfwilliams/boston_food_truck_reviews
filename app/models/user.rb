@@ -3,4 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def admin?
+    user_type == "Admin"
+  end
+
+  def member?
+    user_type == "Member"
+  end
+
+  def vendor?
+    user_type == "Vendor"
+  end
 end
