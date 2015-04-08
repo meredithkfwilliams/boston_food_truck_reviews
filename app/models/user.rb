@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :votes
+  has_many :reviews
+  
   def admin?
     user_type == "Admin"
   end

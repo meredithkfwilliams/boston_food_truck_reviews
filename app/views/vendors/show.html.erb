@@ -31,22 +31,29 @@
      </div>
   </div>
 </div>
-
 <div class="row">
   <div class="large-12 columns">
    <div class="radius panel">
      <div>
        <h3>Reviews:</h3>
        <% @reviews.each do |review| %>
-         <div>
-           <p><%= review.rating %></p>
-           <p><%= review.body %></p>
+           Overall Vote Score: <%= review.vote_value %>
+           <p> <%= review.user.email %> </p>
+           <p>Rating: <%= review.rating %> out of 5</p>
+           <p>Comments: <%= review.body %></p>
             <% if signed_in? %>
-             <% if current_user.id == review.user_id %>
-             <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
-             <% end %>
+              <%= form_for [@vendor, review, @vote ] do |f| %>
+                <%= f.hidden_field :value, :value => 1 %>
+                <%= f.submit "Up" %>
+              <% end %>
+              <%= form_for [@vendor, review, @vote ] do |f| %>
+                <%= f.hidden_field :value, :value => -1 %>
+              <%= f.submit "Down" %>
             <% end %>
-         </div>
+            <% if current_user.id == review.user_id %>
+              <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
+            <% end %>
+            <% end %>
        <% end %>
      </div>
 

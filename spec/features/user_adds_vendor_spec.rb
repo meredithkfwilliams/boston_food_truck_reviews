@@ -5,6 +5,17 @@ feature 'member adds a vendor', %{
   I want to add a vendor
   So that users can share reviews about this vendor
 } do
+  # Acceptance Criteria
+  # * If I'm not signed in, I should not be able to add a vendor
+  # * When I view the vendors page
+  # * I should not see the 'Add Vendor' form
+
+  # * If I'm signed in, I should be able to add a vendor
+  # * When I view the vendors page
+  # * I should see the 'Add Vendor' form
+
+  # * When I submit a new vendor
+  # * I should see the see that my submission is pending review
 
   let!(:category) { FactoryGirl.create(:category) }
 

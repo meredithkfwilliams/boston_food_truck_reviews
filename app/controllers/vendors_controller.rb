@@ -19,6 +19,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.find(params[:id])
     @reviews = @vendor.reviews
     @review = Review.new
+    @vote = Vote.new
   end
 
   def create
