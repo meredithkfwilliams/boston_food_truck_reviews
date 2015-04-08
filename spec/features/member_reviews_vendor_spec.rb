@@ -18,7 +18,10 @@ feature 'member posts vendor review', %{
   # * I should not be able to view the "new review" form
 
   scenario 'member posts a new review for a specific vendor' do
-    review_vendor
+    member = FactoryGirl.create(:user)
+    sign_in(member)
+    vendor = FactoryGirl.create(:vendor)
+    visit vendor_path(vendor)
     fill_in 'Comments:', with: 'Peanut M&Ms, Nougaty, Purpley'
     choose '3'
     click_button 'Create Review'
@@ -26,7 +29,10 @@ feature 'member posts vendor review', %{
   end
 
   scenario 'member tries to post a vendor review' do
-    review_vendor
+    member = FactoryGirl.create(:user)
+    sign_in(member)
+    vendor = FactoryGirl.create(:vendor)
+    visit vendor_path(vendor)
     click_button 'Create Review'
     expect(page).to have_content("Rating can't be blank")
     expect(page).to have_content("Body can't be blank")
@@ -40,10 +46,10 @@ feature 'member posts vendor review', %{
   end
 
   scenario 'member should be able to delete their reviews' do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
+    member = FactoryGirl.create(:user)
+    sign_in(member)
     vendor = FactoryGirl.create(:vendor)
-    review = FactoryGirl.create(:review, vendor: vendor, user: user)
+    review = FactoryGirl.create(:review, vendor: vendor, user: member)
     visit vendor_path(vendor)
 
     click_button 'Delete Review'

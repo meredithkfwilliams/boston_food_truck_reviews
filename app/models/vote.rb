@@ -8,13 +8,13 @@ class Vote < ActiveRecord::Base
     scope: :review_id, message: "User can only vote once per review."
   }
 
-  def self.user_already_voted(user, review)
-    Vote.where(user_id: user.id, review_id: review)
+  def self.user_already_voted?(user, review)
+    !Vote.where(user_id: user.id, review_id: review).empty?
   end
 
-  def self.same_vote(user, review, value)
+  def self.same_vote?(user, review, value)
     review_id = review.id
-    Vote.where(user_id: user.id, review_id: review_id, value: value).empty?
+    !Vote.where(user_id: user.id, review_id: review_id, value: value).empty?
   end
 
   def self.destroy_user_vote(user, review)

@@ -4,12 +4,11 @@ class VotesController < ApplicationController
     @review = @vendor.reviews.find(params[:review_id])
     @value = params[:vote][:value]
 
-    if !Vote.user_already_voted(current_user, @review.id).empty?
-      if !Vote.same_vote(current_user, @review, @value)
+    if Vote.user_already_voted?(current_user, @review.id)
+      if Vote.same_vote?(current_user, @review, @value)
         flash[:notice] = 'You already did that!'
       else
         Vote.destroy_user_vote(current_user, @review)
-        @review = @vendor.reviews.find(params[:review_id])
       end
     end
 
