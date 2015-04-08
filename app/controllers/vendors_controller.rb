@@ -35,10 +35,9 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    if Vendor.approve(@vendor)
-      flash[:notice] = "Vendor Updated"
-      redirect_to vendors_path
-    end
+    Vendor.approve(@vendor)
+    flash[:notice] = "Vendor Updated"
+    redirect_to vendors_path
   end
 
   def destroy

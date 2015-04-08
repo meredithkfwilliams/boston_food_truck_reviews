@@ -9,7 +9,7 @@ feature 'admin manages vendor page', %{
   let!(:category) { FactoryGirl.create(:category) }
   let!(:vendor) { FactoryGirl.create(:vendor) }
   let!(:admin) { FactoryGirl.create(:user, user_type: 'Admin') }
-
+  
   scenario 'admin approves a valid vendor' do
     sign_in(admin)
     create_vendor(vendor)
