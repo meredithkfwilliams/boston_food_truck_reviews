@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :locations
+  resources :locations, only: [:index, :show]
+
 end
