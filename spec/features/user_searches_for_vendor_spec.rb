@@ -6,7 +6,7 @@ feature 'visitor searches for a vendor', %{
   So that I can find my favorite vendor
 } do
 
-  scenario 'visitor searches for a vendor by name' do
+  scenario 'visitor searches for a non-existent vendor name' do
     visit vendors_path
     fill_in 'Search Vendors', with: 'Thai'
     click_button 'Search'
@@ -14,7 +14,7 @@ feature 'visitor searches for a vendor', %{
     expect(page).to have_content('We didn\'t find anything')
   end
 
-  scenario 'visitor searches for a vendor by name' do
+  scenario 'visitor searches for a valid vendor name' do
     vendor = FactoryGirl.create(:vendor)
     visit vendors_path
     fill_in 'Search Vendors', with: vendor.vendor_name
