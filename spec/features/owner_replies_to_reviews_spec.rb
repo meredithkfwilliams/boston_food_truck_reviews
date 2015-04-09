@@ -47,5 +47,4 @@ feature 'owner replies to reviews', %{
     visit vendor_path(vendor)
     expect(page).to have_no_button "Add Reply"
   end
-  
 end
