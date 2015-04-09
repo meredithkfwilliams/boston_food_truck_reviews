@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :avatar, :avatar_cache, :remove_avatar
-
-  validates_presence_of :avatar
   validates_integrity_of :avatar
   validates_processing_of :avatar
 
