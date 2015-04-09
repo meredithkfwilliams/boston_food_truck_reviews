@@ -26,6 +26,18 @@ feature 'owner replies to reviews', %{
     expect(page).to have_content "sup"
   end
 
+  scenario 'vendor owner can reply to reviews' do
+    member = FactoryGirl.create(:user)
+    sign_in(member)
+    vendor = FactoryGirl.create(:vendor)
+    vendor.update(claimed_status: "Claimed", owner_id: member.id)
+    FactoryGirl.create(:review, vendor: vendor)
+    visit vendor_path(vendor)
+    expect(page).to have_button "Add Reply"
+    click_button "Add Reply"
+    expect(page).to have_content "Comment body can't be blank"
+  end
+
   scenario 'non-owners cannot reply to reviews' do
     member = FactoryGirl.create(:user)
     sign_in(member)
@@ -35,5 +47,7 @@ feature 'owner replies to reviews', %{
     visit vendor_path(vendor)
     expect(page).to have_no_button "Add Reply"
   end
+
+
 
 end

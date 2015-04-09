@@ -47,7 +47,7 @@ class VendorsController < ApplicationController
           @vendor.update(owner_id: current_user.id, claimed_status: "Pending")
           flash[:notice] = "Submitted for approval."
         elsif @vendor.claimed_status == "Pending"
-          flash[:notice] = "This business is pending a previous ownership claim."
+          flash[:notice] = "This business is pending a previous ownership claim"
         end
       elsif params[:commit] == "Approve Ownership"
         @vendor.update(claimed_status: "Claimed")

@@ -45,8 +45,7 @@ feature 'user claims business', %{
     visit vendor_path(vendor)
     expect(page).to have_button 'Claim Business'
     click_button 'Claim Business'
-    expect(page).to have_content 'This business is pending a previous ownership claim'
+    expect(page).to have_content 'This business is pending a previous ownership'
   end
-
 
 end

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     authenticate_user!
     @review = Review.find(params[:review_id])
