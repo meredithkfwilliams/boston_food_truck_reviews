@@ -22,4 +22,11 @@ FactoryGirl.define do
   factory :category do
     category_name 'Breakfast'
   end
+
+  factory :comment do
+    review
+    user
+    comment_body 'yayayayayayayyaya'
+  end
+
 end

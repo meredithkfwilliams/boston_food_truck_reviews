@@ -33,65 +33,63 @@
 </div>
 <div class="row">
   <div class="large-12 columns">
-   <div class="radius panel">
-     <div>
-       <% if @vendor.claimed_status != "Claimed" %>
-       <% if signed_in? %>
-       <%= form_for @vendor do |f| %>
-       <%= f.hidden_field :claimed_status, :claimed_status => "Pending" , method: :patch%>
-       <%= f.submit "Claim Business" %>
-       <% end %>
-       <% end %>
-       <% end %>
+    <div class="radius panel">
+      <% if @vendor.claimed_status != "Claimed" %>
+        <% if signed_in? %>
+          <%= form_for @vendor do |f| %>
+            <%= f.hidden_field :claimed_status, :claimed_status => "Pending" , method: :patch%>
+            <%= f.submit "Claim Business" %>
+          <% end %>
+        <% end %>
+      <% end %>
 
-       <% if signed_in? %>
-       <%= render "review_form"%>
-       <% end %>
+      <% if signed_in? %>
+        <%= render "review_form"%>
+      <% end %>
 
-       <h3>Reviews:</h3>
-       <% @reviews.each do |review| %>
-           Overall Vote Score: <%= review.vote_value %>
-           <p> <%= review.user.email %> </p>
-           <p>Rating: <%= review.rating %> out of 5</p>
-           <p>Comments: <%= review.body %></p>
+      <h3>Reviews:</h3>
+      <% @reviews.each do |review| %>
+      Overall Vote Score: <%= review.vote_value %>
+      <p> <%= review.user.email %> </p>
+      <p>Rating: <%= review.rating %> out of 5</p>
+      <p>Comments: <%= review.body %></p>
             <% if signed_in? %>
 
               <%= form_for [@vendor, review, @vote ] do |f| %>
-              <%= f.hidden_field :value, :value => 1 %>
-              <%= f.submit "Up" %>
+                <%= f.hidden_field :value, :value => 1 %>
+                <%= f.submit "Up" %>
               <% end %>
 
               <%= form_for [@vendor, review, @vote ] do |f| %>
-              <%= f.hidden_field :value, :value => -1 %>
-              <%= f.submit "Down" %>
+                <%= f.hidden_field :value, :value => -1 %>
+                <%= f.submit "Down" %>
               <% end %>
 
               <% if current_user.id == review.user_id %>
-              <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
+                <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
               <% end %>
 
-                <% if current_user.id == @vendor.owner_id && @vendor.claimed_status == "Claimed" %>
-                  <%= form_for [@vendor, review, @comment] do |f| %>
+              <% if current_user.id == @vendor.owner_id && @vendor.claimed_status == "Claimed" %>
+                <%= form_for [@vendor, review, @comment] do |f| %>
                   <%= f.label :comment_body, "Reply to review:" %>
                   <%= f.text_field :comment_body %>
                   <%= f.submit "Add Reply" %>
-                  <% end %>
                 <% end %>
-                <% end %>
+              <% end %>
+            <% end %>
 
-                <% if !review.comments.empty? %>
-                <% review.comments.each do |comment| %><br>
-                Owner Comment: <br>
-                <%= comment.created_at %><br>
-                <%= comment.comment_body %><br><br>
-                <% end %>
-                <% end %>
-                <% end %>
+        <% if !review.comments.empty? %>
+          <% review.comments.each do |comment| %><br>
+            Owner Comment: <br>
+            <%= comment.created_at %><br>
+            <%= comment.comment_body %><br><br>
+          <% end %>
+        <% end %>
+      <% end %>
 
-          </div>
-          </div>
-          </div>
-          </div>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="large-12 show-for-small columns">
