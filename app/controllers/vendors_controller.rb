@@ -38,24 +38,12 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    if params[:_method] == "put"
+    params["user"] = current_user
+    if Vendor.approval(params) == "Vendor"
       Vendor.approve(@vendor)
       flash[:notice] = "Vendor Updated"
-    elsif params[:_method] == "patch"
-      if params[:commit] == "Claim Business"
-        if @vendor.claimed_status == "Unclaimed"
-          @vendor.update(owner_id: current_user.id, claimed_status: "Pending")
-          flash[:notice] = "Submitted for approval."
-        elsif @vendor.claimed_status == "Pending"
-          flash[:notice] = "This business is pending a previous ownership claim"
-        end
-      elsif params[:commit] == "Approve Ownership"
-        @vendor.update(claimed_status: "Claimed")
-        flash[:notice] = "Owner approved."
-      elsif params[:commit] == "Deny Claim"
-        @vendor.update(claimed_status: "Unclaimed")
-        flash[:notice] = "Owner denied."
-      end
+    elsif Vendor.approval(params) == "Ownership"
+      flash[:notice] = Vendor.ownership_decision(params)
     end
     redirect_to vendors_path
   end
