@@ -1,0 +1,26 @@
+<div>
+<br>
+
+<% if !@pending_owners.empty? %>
+<%= "Pending Ownership Claims" %>
+<% @pending_owners.each do |vendor| %>
+<% pending_owner = User.find(vendor.owner_id) %>
+  <ul>
+    <li>
+      <%= pending_owner.email %><br>
+    <%= link_to vendor.vendor_name, vendor_path(vendor) %>
+    <%= form_for vendor do |f| %>
+    <%= f.hidden_field :claimed_status, :claimed_status => "Claimed" , method: :patch%>
+    <%= f.submit "Approve Ownership" %>
+    <% end %>
+
+    <%= form_for vendor do |f| %>
+    <%= f.hidden_field :claimed_status, :claimed_status => "Unclaimed" , method: :patch%>
+    <%= f.submit "Deny Claim" %>
+    <% end %>
+    </li>
+  </ul>
+<% end %>
+<% end %>
+
+</div>

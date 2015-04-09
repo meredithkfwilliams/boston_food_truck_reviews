@@ -1,9 +1,15 @@
+<div>
+<br>
+<%= "Pending Vendors" %>
 <% @approvals.each do |vendor| %>
+
   <ul>
     <li>
+
     <%= link_to vendor.vendor_name, vendor_path(vendor) %>
     <%= button_to "Delete", vendor_path(vendor), method: :delete %>
     <%= button_to "Approve", vendor_path(vendor), method: :put %>
     </li>
   </ul>
 <% end %>
+</div>

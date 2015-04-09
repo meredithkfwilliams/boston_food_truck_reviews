@@ -13,6 +13,7 @@ class VendorsController < ApplicationController
     end
     @new_vendor = Vendor.new
     @approvals = Vendor.where(viewable: false)
+    @pending_owners = Vendor.where(claimed_status: "Pending")
   end
 
   def show
@@ -20,6 +21,7 @@ class VendorsController < ApplicationController
     @reviews = @vendor.reviews
     @review = Review.new
     @vote = Vote.new
+    @comment = Comment.new
   end
 
   def create
@@ -36,8 +38,25 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    Vendor.approve(@vendor)
-    flash[:notice] = "Vendor Updated"
+    if params[:_method] == "put"
+      Vendor.approve(@vendor)
+      flash[:notice] = "Vendor Updated"
+    elsif params[:_method] == "patch"
+      if params[:commit] == "Claim Business"
+        if @vendor.claimed_status == "Unclaimed"
+          @vendor.update(owner_id: current_user.id, claimed_status: "Pending")
+          flash[:notice] = "Submitted for approval."
+        elsif @vendor.claimed_status == "Pending"
+          flash[:notice] = "This business is pending a previous ownership claim."
+        end
+      elsif params[:commit] == "Approve Ownership"
+        @vendor.update(claimed_status: "Claimed")
+        flash[:notice] = "Owner approved."
+      elsif params[:commit] == "Deny Claim"
+        @vendor.update(claimed_status: "Unclaimed")
+        flash[:notice] = "Owner denied."
+      end
+    end
     redirect_to vendors_path
   end
 
@@ -49,6 +68,6 @@ class VendorsController < ApplicationController
 
   protected
   def vendor_params
-    params.require(:vendor).permit(:vendor_name)
+    params.require(:vendor).permit(:vendor_name, :claimed_status)
   end
 end

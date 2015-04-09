@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :vendors,
     only: [:index, :show, :edit, :update, :create, :destroy] do
     resources :reviews do
+      resources :comments, only: [:create]
       resources :votes, only: [:create]
     end
   end
