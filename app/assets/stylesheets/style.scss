@@ -1,19 +1,21 @@
 body {
+  color: #696969;
+  font-family: 'Droid Serif', serif;
   background-image: image-url("bg1.jpg");
   background-repeat: no-repeat;
   background-position: center top;
 }
 
-#footer_margin {
-  margin-bottom: 100px;
-}
 
 ul.right.button-group {
-  margin-top: 10px;
+  margin-top: 10%;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 button, .button {
+  font-family: 'Droid Serif', serif;
   background-color: #2ac535;
+  margin: 0;
   transition: background-color 300ms ease-out;
 }
 
@@ -23,4 +25,134 @@ button, .button:hover {
   transition-duration: 300ms;
   transition-timing-function: ease-out;
   transition-delay: initial;
+}
+
+input[type=submit] {
+  color: white;
+  font-size: 14px;
+  background-color: #2ac535;
+  font-family: 'Droid Serif', serif;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #888888;
+  display: inline-block;
+}
+
+input[type=submit]:hover {
+  background-color: #fc8007;
+}
+
+.radio_buttons label {
+  display: inline;
+  margin-right: 5px;
+}
+
+.radio_buttons input {
+  padding-right: 5px;
+}
+
+.review {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.upvote {
+  display: inline;
+}
+
+.downvote {
+  display: inline;
+}
+
+.delete_review {
+  display: inline;
+}
+
+.boston_roots {
+  font-family: 'Droid Serif', serif;
+  color: #fc8007;
+  font-size: 24pt;
+  position: absolute;
+  margin-top: 105px;
+}
+
+.logo {
+  padding-left: 8px;
+}
+
+.menu {
+  box-shadow: 10px 10px 5px #888888;
+}
+
+#featured_vendor_row {
+  margin-top: 5px;
+}
+
+.featured_vendor_image {
+  box-shadow: 5px 5px 3px #888888;
+  margin-bottom: 20px;
+}
+
+.featured_vendor_h4 {
+  font-family: 'Droid Serif', serif;
+  color: #fc8007;
+  text-align: center;
+}
+
+.featured_vendor_text {
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.featured_vendor_text:hover {
+  color: black;
+  background-color: #fbdbbc;
+}
+
+.vendor_index_headers {
+  font-family: 'Droid Serif', serif;
+  color: #fc8007;
+}
+
+.vendor_details_headers {
+  font-family: 'Droid Serif', serif;
+  color: #fc8007;
+}
+
+.panel {
+  color: #545454;
+  border-radius: 5px;
+}
+
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h6 {
+  color: #fc8007;
+}
+
+.panel h5 {
+  color: #545454;
+}
+
+.panel p {
+  color: #545454;
+}
+
+.vendor_index_panel {
+  background-color: #f2f2f2;
+  border-radius: 0px;
+  padding: 8px;
+}
+
+.vendor_index_panel h6 {
+  color: #fc8007;
+}
+
+#vendor_reviews_row {
+  color: #545454;
+  margin-top: 25px;
+}
+
+#footer_margin {
+  margin-bottom: 100px;
+  margin-top: 20px;
 }

@@ -13,6 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require slick
 //= require_tree .
+
+$('.fade').slick({
+  dots: true,
+  infinite: true,
+  speed: 500,
+  fade: true,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  cssEase: 'linear'
+});
 
 $(function(){ $(document).foundation(); });

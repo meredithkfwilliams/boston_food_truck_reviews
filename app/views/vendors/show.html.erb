@@ -1,61 +1,50 @@
 <div class="row">
-
   <div class="large-6 columns">
-   <img src="http://placehold.it/500x500&text=Image"><br>
+   <%= image_tag "vendor_stock.jpg"%>
   </div>
-
-
   <div class="large-6 columns">
-    <h3 class="show-for-small">Header<hr/></h3>
+    <h3 class="show-for-small vendor_details_headers">Header<hr/></h3>
     <div class="panel">
-      <h4 class="hide-for-small"><%= @vendor.vendor_name %><hr/></h4>
-      <h5 class="subheader">Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros. Pellentesque consectetur tempus mi iaculis bibendum. Ut vel dolor sed eros tincidunt volutpat ac eget leo.</h5>
+      <h4 class="hide-for-small vendor_details_headers"><%= @vendor.vendor_name %><hr/></h4>
+      <h5 class="subheader vendor_details_headers">Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros. Pellentesque consectetur tempus mi iaculis bibendum. Ut vel dolor sed eros tincidunt volutpat ac eget leo.</h5>
     </div>
-
-    <div class="row">
-       <div class="large-6 small-6 columns">
-         <div class="panel">
-           <h5>Header</h5>
-           <h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
-           <a href="#" class="small button">BUTTON TIME!</a>
-         </div>
-       </div>
-
-       <div class="large-6 small-6 columns">
-         <div class="panel">
-           <h5>Header</h5>
-           <h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
-           <a href="#" class="small button">BUTTON TIME!</a>
-         </div>
-       </div>
-     </div>
   </div>
 </div>
-<div class="row">
+
+<div class="row" id="vendor_reviews_row">
   <div class="large-12 columns">
-   <div class="radius panel">
-     <div>
-       <h3>Reviews:</h3>
-       <% @reviews.each do |review| %>
-           Overall Vote Score: <%= review.vote_value %>
-           <p> <%= review.user.email %> </p>
-           <p>Rating: <%= review.rating %> out of 5</p>
-           <p>Comments: <%= review.body %></p>
-            <% if signed_in? %>
-              <%= form_for [@vendor, review, @vote ] do |f| %>
-                <%= f.hidden_field :value, :value => 1 %>
-                <%= f.submit "Up" %>
-              <% end %>
-              <%= form_for [@vendor, review, @vote ] do |f| %>
-                <%= f.hidden_field :value, :value => -1 %>
-              <%= f.submit "Down" %>
+   <div class="panel">
+     <h3 class="vendor_details_headers">Reviews:</h3>
+        <% @reviews.each do |review| %>
+          <div class="review">
+            <div>Review Score: <%= review.vote_value %></div>
+            <div><%= review.user.email %></div>
+            <div>Rating: <%= review.rating %> out of 5</div>
+            <div>Review Comments: <%= review.body %></div>
+
+          <% if signed_in? %>
+            <%= form_for [@vendor, review, @vote ], :html => {class: 'upvote'} do |f| %>
+              <%= f.hidden_field :value, :value => 1 %>
+                <div class="upvote">
+                  <%= f.submit "Up" %>
+                </div>
             <% end %>
+
+            <%= form_for [@vendor, review, @vote ], :html => {class: 'downvote'} do |f| %>
+              <%= f.hidden_field :value, :value => -1 %>
+                <div class="downvote">
+                  <%= f.submit "Down" %>
+                </div>
+            <% end %>
+
             <% if current_user.id == review.user_id %>
-              <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
+              <div class="delete_review">
+                <%= button_to "Delete Review", vendor_review_path(@vendor, review), method: :delete %>
+              </div>
             <% end %>
-            <% end %>
-       <% end %>
-     </div>
+          <% end %>
+          </div>
+        <% end %>
 
      <% if signed_in? %>
      <%= render "review_form"%>
@@ -66,34 +55,22 @@
 
 <div class="row">
   <div class="large-12 show-for-small columns">
-    <h3>Header</h3><hr>
+    <h3 class="vendor_details_headers">Header</h3><hr>
   </div>
 
   <div class="large-3 small-6 columns">
    <img src="http://placehold.it/500x500&text=Thumbnail">
-   <div class="panel">
-     <p>Description</p>
-   </div>
   </div>
 
   <div class="large-3 small-6 columns">
    <img src="http://placehold.it/500x500&text=Thumbnail">
-   <div class="panel">
-     <p>Description</p>
-   </div>
   </div>
 
   <div class="large-3 small-6 columns">
    <img src="http://placehold.it/500x500&text=Thumbnail">
-   <div class="panel">
-     <p>Description</p>
-   </div>
   </div>
 
   <div class="large-3 small-6 columns">
    <img src="http://placehold.it/500x500&text=Thumbnail">
-   <div class="panel">
-     <p>Description</p>
-   </div>
   </div>
 </div>
