@@ -1,3 +1,5 @@
 Hello <%= User.find(@review.vendor.owner_id).email %>
 
-<%= @review.user.email %> has left a TERRIBLE review for your business.
+A new review was just posted on your vendors page.
+
+<%= @review.body %>

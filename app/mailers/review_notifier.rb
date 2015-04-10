@@ -1,5 +1,5 @@
 class ReviewNotifier < ApplicationMailer
-  default from: "reviews@example.com"
+  default from: "reviews@bostontruckreview.com"
   def new_review(review)
     @review = review
     if !@review.vendor.owner_id.nil?

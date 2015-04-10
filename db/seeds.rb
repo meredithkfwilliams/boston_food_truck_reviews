@@ -6,13 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require_relative '../spec/support/factory_girl.rb'
-
-if Rails.env.development?
-  FactoryGirl.create(:vendor)
-  FactoryGirl.create(:review)
-end
-
 ['African',
   'American',
   'Asian',
