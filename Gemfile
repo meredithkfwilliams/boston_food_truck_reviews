@@ -18,17 +18,16 @@ gem 'carrierwave_direct'
 gem 'fog'
 gem 'fog-aws'
 gem 'mini_magick'
-
+gem 'dotenv-rails'
+gem 'factory_girl'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'pry-rails'
-  gem 'dotenv-rails'
 end
 
 

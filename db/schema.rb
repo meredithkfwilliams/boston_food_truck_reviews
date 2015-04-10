@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409155817) do
+ActiveRecord::Schema.define(version: 20150410170046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "review_id",    null: false
+    t.integer  "user_id",      null: false
+    t.text     "comment_body", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,10 +83,12 @@ ActiveRecord::Schema.define(version: 20150409155817) do
   end
 
   create_table "vendors", force: :cascade do |t|
-    t.string   "vendor_name", null: false
+    t.string   "vendor_name",                          null: false
     t.boolean  "viewable"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.string   "claimed_status", default: "Unclaimed"
   end
 
   create_table "votes", force: :cascade do |t|
