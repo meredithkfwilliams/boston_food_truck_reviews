@@ -14,7 +14,10 @@ gem 'foundation-rails', "5.5.1.0"
 gem 'kaminari'
 gem 'rails_12factor', group: :production
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'fog'
 gem 'fog-aws'
+gem 'mini_magick'
 gem 'dotenv-rails'
 gem 'factory_girl'
 
