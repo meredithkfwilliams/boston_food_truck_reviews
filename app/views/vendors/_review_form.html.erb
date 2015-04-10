@@ -1,9 +1,11 @@
-<div class="row collapse">
-  <h3>Add Review:</h3>
+<div class="add_a_review_form">
+  <h3 class="vendor_details_headers">Add Review:</h3>
   <%= form_for [@vendor, @review] do |f| %>
-    <%= f.collection_radio_buttons(:rating, (1..5), :to_s, :to_s) do |b| %>
-      <%= b.label(:"data-value" => b.value) { b.radio_button + b.text } %>
-    <% end %>
+    <div class="radio_buttons">
+      <%= f.collection_radio_buttons(:rating, (1..5), :to_s, :to_s) do |b| %>
+        <%= b.label(:"data-value" => b.value) { b.radio_button + b.text } %>
+      <% end %>
+    </div>
     <%= f.label :body, "Comments:" %>
     <%= f.text_field :body %>
     <%= f.submit %>
