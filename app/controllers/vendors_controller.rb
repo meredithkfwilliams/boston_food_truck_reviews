@@ -13,6 +13,7 @@ class VendorsController < ApplicationController
     end
     @new_vendor = Vendor.new
     @approvals = Vendor.where(viewable: false)
+    @pending_owners = Vendor.where(claimed_status: "Pending")
   end
 
   def show
@@ -20,6 +21,7 @@ class VendorsController < ApplicationController
     @reviews = @vendor.reviews
     @review = Review.new
     @vote = Vote.new
+    @comment = Comment.new
   end
 
   def create
@@ -36,8 +38,13 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    Vendor.approve(@vendor)
-    flash[:notice] = "Vendor Updated"
+    params["user"] = current_user
+    if Vendor.approval(params) == "Vendor"
+      Vendor.approve(@vendor)
+      flash[:notice] = "Vendor Updated"
+    elsif Vendor.approval(params) == "Ownership"
+      flash[:notice] = Vendor.ownership_decision(params)
+    end
     redirect_to vendors_path
   end
 
@@ -49,6 +56,6 @@ class VendorsController < ApplicationController
 
   protected
   def vendor_params
-    params.require(:vendor).permit(:vendor_name)
+    params.require(:vendor).permit(:vendor_name, :claimed_status)
   end
 end
