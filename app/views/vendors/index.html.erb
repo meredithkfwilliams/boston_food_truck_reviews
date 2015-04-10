@@ -37,7 +37,7 @@
 
       <% @vendors.each do |vendor| %>
         <div class="large-4 small-6 columns">
-          <%= link_to image_tag("http://placehold.it/1000x1000&text=Thumbnail"), vendor_path(vendor) %>
+          <%= link_to image_tag(vendor.image), vendor_path(vendor) %>
             <div class="vendor_index_panel">
               <h5 class="vendor_index_headers"><%= link_to vendor.vendor_name, vendor_path(vendor) %></h5>
               <% vendor.categories.each do |cat| %>
