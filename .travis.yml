@@ -5,6 +5,5 @@ before_script:
 - psql -c 'create database food_truck_test;' -U postgres
 env:
   matrix:
-  - secure: LQwO3gvA6Db7Syp3pyp3nHfOfhbJfsKkD1D8aQuKs1HMSe8fN3qcOb+DwufAzq7+k3aRXZdpSO5xll01FY8lFZlGdJlucUi1D/b1zrOGPtVqY8NjGXIt6ixCT6uyNxLcrF8sQOU7IYg8FjjIVuO2zgeF50NyfbZAHhbeVi+ZA/k=
-  - secure: OeAmGvApRW84EeG9387+KZQ2PyhXVHV+AYOGNLbIh/wgsYyrOPnDiTpGWXVz4pEOJvvMli8mw4d2ghTunoxxcwpuvSzU0ECf9N0i2NG1EHXJ+Za7kau0BO/A8S9eg1CaVOVW/ySn7IDKfyj6WQdR2Z2zM01YPd/7IA6sE04WePY=
-  - secure: KfLqKdiab8sNy/3Btc3HcgknLwHWA08x3S2rPTF2NPN1x4wjyTjtgoIndgqGemzyG9WppfJRxeXQCdLfarjRBvP1IiteXvkL+c81A3LTY3T+jPguAdCU5b+GShk1qCEH3aJQEYztnOPb5zAXezdb4kGUuDMvR+SdkNN3jGhyjJU=
+  - AWS_ACCESS_KEY_ID=AKIYOURKEYGOESHEREOA2VA
+  - AWS_SECRET_ACCESS_KEY=0NtSREPLACEWITHYOURSECRETKEYjmYAHRGlVoyR
