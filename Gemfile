@@ -15,6 +15,7 @@ gem 'kaminari'
 gem 'rails_12factor', group: :production
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -24,7 +25,6 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'pry-rails'
-  gem 'dotenv-rails'
 end
 
 
