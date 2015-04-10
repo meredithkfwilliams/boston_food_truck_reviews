@@ -14,17 +14,20 @@ gem 'foundation-rails', "5.5.1.0"
 gem 'kaminari'
 gem 'rails_12factor', group: :production
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'fog'
 gem 'fog-aws'
+gem 'mini_magick'
+gem 'dotenv-rails'
+gem 'factory_girl'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'pry-rails'
-  gem 'dotenv-rails'
 end
 
 
