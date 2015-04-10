@@ -4,12 +4,12 @@ class VendorsController < ApplicationController
 
   def index
     if params[:search]
-      @vendors = Vendor.search(params[:search]).order("created_at DESC").page(params[:page]).per(9)
+      @vendors = Vendor.search(params[:search]).order("created_at DESC").page(params[:page]).per(6)
       if @vendors.empty?
         flash[:notice] = "We didn't find anything"
       end
     elsif params[:search].nil?
-      @vendors = Vendor.where(viewable: true).page(params[:page]).per(9)
+      @vendors = Vendor.where(viewable: true).page(params[:page]).per(6)
     end
     @new_vendor = Vendor.new
     @approvals = Vendor.where(viewable: false)
