@@ -26,24 +26,24 @@ feature 'member votes on a review', %{
 
   scenario 'member posts up-vote to a review' do
     click_button 'Up'
-    expect(page).to have_content 'Overall Vote Score: 1'
+    expect(page).to have_content 'Review Score: 1'
   end
 
   scenario 'member posts down-vote to a review' do
     click_button 'Down'
-    expect(page).to have_content 'Overall Vote Score: -1'
+    expect(page).to have_content 'Review Score: -1'
   end
 
   scenario 'member up-votes then changes to down-vote' do
     click_button 'Up'
     click_button 'Down'
-    expect(page).to have_content 'Overall Vote Score: -1'
+    expect(page).to have_content 'Review Score: -1'
   end
 
   scenario 'member votes up or down twice' do
     click_button 'Up'
     click_button 'Up'
     expect(page).to have_content 'You already did that!'
-    expect(page).to have_content 'Overall Vote Score: 1'
+    expect(page).to have_content 'Review Score: 1'
   end
 end
