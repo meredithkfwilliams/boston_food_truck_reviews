@@ -25,6 +25,13 @@
       <% end %>
     </div>
 
+    <div>
+      <% if current_user.try(:admin?) %>
+        <%= render "manage_owners" %>
+      <% end %>
+    </div>
+
+
   </div>
 
   <div class="large-8 columns">
